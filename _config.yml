@@ -1,0 +1,30 @@
+title: Silas Dray
+description: A serialized novel. Audio first. Weekly chapters.
+url: https://silasdray.com
+baseurl: ""
+
+# Author identity is the pen name only. Real-name attribution is deliberately
+# kept out of the site at this stage (per the project's pen-name discipline).
+author:
+  name: Silas Dray
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Don't ship build artifacts or dev files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .gitignore
+
+# Future-proofing for sitemap/feed
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

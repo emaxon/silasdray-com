@@ -1,0 +1,175 @@
+/* Silas Dray — site styles
+   Literary, restrained, dark. Built for prose, not for marketing. */
+
+:root {
+  --bg: #0e0e10;
+  --bg-elevated: #16161a;
+  --text: #e8e6e3;
+  --text-dim: #8b8a87;
+  --text-faint: #5a5957;
+  --rule: #2a2a2c;
+  --accent: #d4a574;
+  --max-width: 38rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Crimson Pro', 'Crimson Text', Georgia, 'Iowan Old Style', serif;
+  font-size: 19px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+  flex: 1;
+}
+
+@media (max-width: 540px) {
+  main { padding: 4rem 1.5rem 2rem; }
+  body { font-size: 17px; }
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+h1.site-title {
+  font-size: 2.5rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+h1.site-title + .tagline {
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  margin-bottom: 4rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+h2.book-title { font-style: italic; }
+
+h2 + .book-status {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Body prose */
+p {
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+p.lede {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+em { color: var(--text); font-style: italic; }
+strong { color: var(--text); font-weight: 500; }
+
+/* Rule */
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 3rem 0;
+}
+
+/* Email signup */
+.signup {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.signup p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+
+.signup a {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  transition: opacity 120ms ease;
+  font-size: 1rem;
+}
+
+.signup a:hover { opacity: 0.7; }
+
+/* Distribution list */
+.distribution {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-top: 2rem;
+}
+
+/* Footer */
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--rule);
+}
+
+footer p { margin: 0; color: var(--text-faint); }
+
+/* Inline links generally (not hover-treated like buttons) */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease;
+}
+
+a:hover { border-bottom-color: var(--accent); }
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
