@@ -1,0 +1,15 @@
+<header class="site-header" role="banner">
+  <a href="{{ '/' | relative_url }}" class="wordmark">SILAS DRAY</a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="{{ '/ninety-four/' | relative_url }}">NINETY-FOUR</a>
+    <a href="{{ '/notes/' | relative_url }}">NOTES</a>
+    <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+    {%- comment -%}
+    On non-home pages, the SUBSCRIBE link routes to the home page anchor.
+    On the home page itself, it scrolls in-page via #subscribe.
+    {%- endcomment -%}
+    {% assign target = '/' %}
+    {% if page.url == '/' %}{% assign target = '' %}{% endif %}
+    <a href="{{ target | relative_url }}#subscribe" class="subscribe-link">SUBSCRIBE</a>
+  </nav>
+</header>

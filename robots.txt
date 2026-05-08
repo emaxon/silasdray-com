@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /thanks/
+Allow: /
+
+Sitemap: https://silasdray.com/sitemap.xml

@@ -5,6 +5,7 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+node_modules/
 
 # OS / editor
 .DS_Store

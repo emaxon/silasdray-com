@@ -1,18 +1,39 @@
+# silasdray.com — site config
+# Locked by 2026-05-08 site-strategy roundtable; see _docs/design-system.md
+# and the dystopian-series session note for full rationale.
+
 title: Silas Dray
-description: A serialized novel. Audio first. Weekly chapters.
+description: >
+  Ninety-Four is a serialized novel by Silas Dray. Audio first.
+  Weekly chapters.
 url: https://silasdray.com
 baseurl: ""
 
-# Author identity is the pen name only. Real-name attribution is deliberately
-# kept out of the site at this stage (per the project's pen-name discipline).
+# Pen-name discipline: only the pen name appears on the site.
 author:
   name: Silas Dray
+  url: https://silasdray.com
+
+# SendFox subscribe form action — set after Sprint 1.12 / 1.13 wires up the form
+# Until then, form posts to this placeholder which renders a clear console error
+# (better than a silent failure).
+sendfox_form_url: "https://sendfox.com/form/PLACEHOLDER/PLACEHOLDER"
 
 # Build settings
 markdown: kramdown
+permalink: pretty
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+
+# jekyll-seo-tag config
+twitter:
+  card: summary
+logo: # intentionally absent — no author photo, no logo (per pen-name discipline)
+
+# jekyll-sitemap excludes pages with `sitemap: false` in front matter
+# /thanks/ has both `noindex: true` AND `sitemap: false` to avoid GSC inconsistency
 
 # Don't ship build artifacts or dev files
 exclude:
@@ -21,10 +42,14 @@ exclude:
   - README.md
   - vendor
   - .gitignore
+  - _docs
+  - node_modules
 
-# Future-proofing for sitemap/feed
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+
+# Custom 404 page is served from /404.html by GitHub Pages automatically
+# when the file exists at that path

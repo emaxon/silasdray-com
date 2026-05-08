@@ -1,0 +1,24 @@
+<div class="subscribe-wrap" id="subscribe">
+  <form class="subscribe" action="{{ site.sendfox_form_url }}" method="post" accept-charset="utf-8">
+    <label for="subscribe-email-{{ include.id | default: 'a' }}" class="subscribe-label">NOTIFY ME WHEN EPISODE ONE RELEASES</label>
+    <div class="subscribe-row">
+      <input
+        id="subscribe-email-{{ include.id | default: 'a' }}"
+        type="email"
+        name="email"
+        placeholder="your email address"
+        required
+        autocomplete="email"
+        aria-label="Email address">
+      <button class="subscribe-button" type="submit">SUBSCRIBE</button>
+    </div>
+    <p class="subscribe-fine-print">One email when the first episode releases. No other use.</p>
+    {%- comment -%}
+    Honeypot field — invisible to users, keyboard skips it. Per kai-workspace
+    SendFox playbook (agency/docs/playbooks/content-site-playbook.md Appendix A).
+    {%- endcomment -%}
+    <div aria-hidden="true" style="position:absolute;left:-5000px;height:0;overflow:hidden">
+      <input type="text" name="a_]dkv" tabindex="-1" autocomplete="off">
+    </div>
+  </form>
+</div>

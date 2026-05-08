@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+  <main class="legal-main">
+    <article class="legal-article">
+      <h1>{{ page.title | upcase }}</h1>
+      {{ content }}
+    </article>
+  </main>
+  {% include footer.html %}
+</body>
+</html>

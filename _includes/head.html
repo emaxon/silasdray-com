@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Preload critical fonts (subset Latin woff2) -->
+<link rel="preload" href="{{ '/assets/fonts/IBMPlexSerif-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ '/assets/fonts/IBMPlexMono-Medium.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{%- comment -%}
+Page-level noindex: emit a robots meta when front matter sets `noindex: true`
+or when the path is in the explicit no-index list (/thanks/, /404).
+{%- endcomment -%}
+{% if page.noindex or page.url == '/thanks/' or page.url == '/404.html' %}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
+
+<!-- jekyll-seo-tag emits canonical, OG/Twitter cards, JSON-LD WebSite, etc. -->
+{% seo %}
+
+<!-- Person schema (every page) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Silas Dray",
+  "url": "{{ site.url }}",
+  "description": "Pen name. Author of Ninety-Four — a serialized dystopian novel."
+}
+</script>
+
+{% if page.book_schema %}
+<!-- Book schema (only on /ninety-four/) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Ninety-Four",
+  "author": { "@type": "Person", "name": "Silas Dray" },
+  "genre": "Dystopian Fiction",
+  "bookFormat": "https://schema.org/AudiobookFormat",
+  "workExample": [{
+    "@type": "PublicationVolume",
+    "name": "Ninety-Four",
+    "volumeNumber": "1"
+  }],
+  "url": "{{ site.url }}/ninety-four/"
+}
+</script>
+{% endif %}
+
+{% if site.google_analytics %}
+<!-- GA4 — populated after Sprint 2.1 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+{% endif %}
+
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">

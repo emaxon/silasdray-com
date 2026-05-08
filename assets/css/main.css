@@ -1,0 +1,451 @@
+/*
+ * silasdray.com — main stylesheet
+ *
+ * Single file. Hand-rolled CSS with custom properties. No framework.
+ *
+ * Design system spec: /_docs/design-system.md
+ * Future changes argue against the spec; the spec file is the contract.
+ *
+ * Locked 2026-05-08. Total payload target: under 10KB minified.
+ */
+
+/* ── @font-face ───────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Plex Serif";
+  src: url("/assets/fonts/IBMPlexSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+2010-2027, U+2030-2059, U+20A0-20CF, U+2113, U+2122, U+2190-21FF, U+25CA;
+}
+
+@font-face {
+  font-family: "Plex Serif";
+  src: url("/assets/fonts/IBMPlexSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+2010-2027, U+2030-2059, U+20A0-20CF, U+2113, U+2122, U+2190-21FF, U+25CA;
+}
+
+@font-face {
+  font-family: "Plex Serif";
+  src: url("/assets/fonts/IBMPlexSerif-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+2010-2027, U+2030-2059, U+20A0-20CF, U+2113, U+2122, U+2190-21FF, U+25CA;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+2010-2027, U+2030-2059, U+20A0-20CF, U+2113, U+2122, U+2190-21FF, U+25CA;
+}
+
+/* ── Tokens ──────────────────────────────────────────────── */
+
+:root {
+  /* Palette */
+  --paper:     #F4F1EA;
+  --ink:       #1A1715;
+  --ink-muted: #5C564E;
+  --rule:      #C9C2B5;
+  --mark:      #6B1F1A;
+  --mark-soft: #8B3A2D;
+
+  /* Spacing scale */
+  --s-1:  0.25rem;
+  --s-2:  0.5rem;
+  --s-3:  0.75rem;
+  --s-4:  1rem;
+  --s-6:  1.5rem;
+  --s-8:  2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-24: 6rem;
+  --s-32: 8rem;
+
+  /* Type scale */
+  --t-sm:  0.875rem;
+  --t-md:  1rem;
+  --t-lg:  1.125rem;
+  --t-xl:  1.5rem;
+  --t-2xl: 2rem;
+  --t-3xl: 2.5rem;
+
+  /* Reading widths */
+  --col-read: 65ch;
+  --col-page: 1040px;
+  --col-form: 480px;
+}
+
+/* ── Reset / base ────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body, h1, h2, h3, h4, p, ul, ol, figure, blockquote, form, input, button { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  font-family: "Plex Serif", Georgia, serif;
+  font-feature-settings: "kern" 1, "tnum" 1;
+  color: var(--ink);
+  line-height: 1.7;
+  background: var(--paper);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ── Headings + chrome (mono) ────────────────────────────── */
+
+h1, h2, h3, .mono,
+.wordmark, .site-nav a,
+.subscribe-label, .subscribe-button,
+.footer-mark, .footer-meta {
+  font-family: "Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: var(--t-2xl);
+  margin-bottom: var(--s-8);
+  letter-spacing: 0.04em;
+}
+
+h2 {
+  font-size: var(--t-xl);
+  margin-top: var(--s-16);
+  margin-bottom: var(--s-4);
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  font-size: var(--t-lg);
+  margin-top: var(--s-12);
+  margin-bottom: var(--s-3);
+}
+
+/* ── Body prose ──────────────────────────────────────────── */
+
+p { margin-bottom: var(--s-6); max-width: var(--col-read); }
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 600; color: var(--ink); }
+
+blockquote {
+  margin: var(--s-8) 0;
+  padding-left: var(--s-6);
+  border-left: 2px solid var(--rule);
+  color: var(--ink);
+  font-size: var(--t-lg);
+  max-width: var(--col-read);
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote cite {
+  display: block;
+  margin-top: var(--s-3);
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--t-md);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-12) 0;
+  max-width: var(--col-read);
+}
+
+/* ── Links ───────────────────────────────────────────────── */
+
+a {
+  color: var(--mark);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 100ms ease, color 100ms ease;
+}
+a:hover { color: var(--mark-soft); border-bottom-color: var(--mark-soft); }
+a:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 3px;
+  border-bottom-color: transparent;
+}
+
+/* ── Site header ─────────────────────────────────────────── */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-6);
+  max-width: var(--col-page);
+  margin: 0 auto;
+  padding: var(--s-8) var(--s-8) var(--s-12);
+  border-bottom: 1px solid var(--rule);
+}
+
+.wordmark {
+  color: var(--mark);
+  font-size: var(--t-md);
+  letter-spacing: 0.12em;
+  border-bottom: none;
+}
+.wordmark:hover { color: var(--mark-soft); border-bottom: none; }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6);
+  font-size: var(--t-sm);
+  letter-spacing: 0.08em;
+}
+
+.site-nav a {
+  color: var(--ink);
+  border-bottom: none;
+}
+.site-nav a:hover { color: var(--mark); border-bottom: none; }
+
+.site-nav .subscribe-link { color: var(--mark); }
+.site-nav .subscribe-link:hover { color: var(--mark-soft); }
+
+/* ── Site footer ─────────────────────────────────────────── */
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
+  max-width: var(--col-page);
+  margin: var(--s-24) auto 0;
+  padding: var(--s-8) var(--s-8) var(--s-8);
+  border-top: 1px solid var(--rule);
+  font-size: var(--t-sm);
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+}
+
+.footer-mark { color: var(--mark); letter-spacing: 0.12em; }
+.footer-meta a { color: var(--ink-muted); }
+.footer-meta a:hover { color: var(--mark); }
+.footer-sep { margin: 0 var(--s-1); color: var(--rule); }
+
+/* ── Content surfaces ────────────────────────────────────── */
+
+.content {
+  max-width: var(--col-page);
+  margin: 0 auto;
+  padding: var(--s-16) var(--s-8) var(--s-24);
+}
+
+.content-narrow {
+  max-width: var(--col-read);
+  margin: 0 auto;
+  padding: var(--s-16) var(--s-8) var(--s-24);
+}
+
+.lede {
+  font-size: var(--t-xl);
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: var(--s-8);
+  max-width: var(--col-read);
+}
+
+/* Three labeled paths on the landing page */
+.path-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-12);
+  margin-top: var(--s-16);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s-12);
+}
+
+.path-list .path-item h2 {
+  margin: 0 0 var(--s-3);
+  font-size: var(--t-md);
+  letter-spacing: 0.12em;
+}
+
+.path-list .path-item p {
+  margin: 0 0 var(--s-3);
+  font-style: italic;
+  color: var(--ink-muted);
+  max-width: var(--col-read);
+}
+
+.path-list .path-item .path-link {
+  color: var(--mark);
+  font-family: "Plex Mono", ui-monospace, monospace;
+  font-size: var(--t-sm);
+  letter-spacing: 0.08em;
+  border-bottom: none;
+}
+.path-list .path-item .path-link:hover { color: var(--mark-soft); }
+
+/* ── Subscribe form ──────────────────────────────────────── */
+
+.subscribe-wrap {
+  max-width: var(--col-form);
+  margin: var(--s-12) 0;
+  padding-top: var(--s-8);
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: var(--s-16);
+}
+
+.subscribe-label {
+  display: block;
+  font-size: var(--t-sm);
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-bottom: var(--s-3);
+}
+
+.subscribe-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--rule);
+  background: #FFFEF9;
+}
+
+.subscribe-row input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  padding: var(--s-3) var(--s-4);
+  font-family: "Plex Serif", Georgia, serif;
+  font-size: var(--t-md);
+  color: var(--ink);
+  min-width: 0;
+}
+.subscribe-row input::placeholder { color: var(--ink-muted); font-style: italic; }
+.subscribe-row input:focus {
+  outline: 2px solid var(--mark);
+  outline-offset: -2px;
+  background: var(--paper);
+}
+
+.subscribe-button {
+  background: var(--mark);
+  color: var(--paper);
+  border: 0;
+  padding: var(--s-3) var(--s-6);
+  font-family: "Plex Mono", ui-monospace, monospace;
+  font-weight: 500;
+  font-size: var(--t-sm);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+.subscribe-button:hover { background: var(--mark-soft); }
+.subscribe-button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.subscribe-fine-print {
+  margin-top: var(--s-3);
+  font-size: var(--t-sm);
+  font-style: italic;
+  color: var(--ink-muted);
+  max-width: var(--col-form);
+}
+
+/* ── Legal layout (16px body, reference-material register) ─ */
+
+.legal-main { max-width: var(--col-page); margin: 0 auto; padding: var(--s-16) var(--s-8) var(--s-24); }
+.legal-article { max-width: var(--col-read); font-size: var(--t-md); line-height: 1.6; }
+.legal-article h1 { font-size: var(--t-xl); letter-spacing: 0.06em; margin-bottom: var(--s-8); }
+.legal-article h2 { font-size: var(--t-lg); margin-top: var(--s-8); }
+.legal-article p, .legal-article ul, .legal-article ol { font-size: var(--t-md); margin-bottom: var(--s-4); }
+.legal-article ul, .legal-article ol { padding-left: var(--s-6); list-style: disc; }
+
+/* ── 404 ─────────────────────────────────────────────────── */
+
+.notfound { max-width: var(--col-read); margin: 0 auto; padding: var(--s-32) var(--s-8); text-align: left; }
+.notfound h1 { font-size: var(--t-3xl); margin-bottom: var(--s-6); letter-spacing: 0.04em; }
+.notfound p { font-size: var(--t-lg); color: var(--ink); margin-bottom: var(--s-8); }
+.notfound a {
+  font-family: "Plex Mono", ui-monospace, monospace;
+  font-size: var(--t-sm);
+  letter-spacing: 0.08em;
+  color: var(--mark);
+  border-bottom: none;
+}
+
+/* ── /notes/ empty state ─────────────────────────────────── */
+
+.notes-empty {
+  max-width: var(--col-read);
+  margin: var(--s-16) 0;
+  font-family: "Plex Mono", ui-monospace, monospace;
+  font-size: var(--t-md);
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+
+  .site-header {
+    padding: var(--s-6) var(--s-4) var(--s-8);
+    gap: var(--s-4);
+  }
+  .site-nav { gap: var(--s-4); }
+
+  .site-footer {
+    padding: var(--s-6) var(--s-4);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3);
+  }
+
+  .content, .content-narrow, .legal-main { padding: var(--s-12) var(--s-4) var(--s-16); }
+
+  .subscribe-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .subscribe-row input { padding: var(--s-3) var(--s-4); }
+  .subscribe-button {
+    border-top: 1px solid var(--rule);
+    padding: var(--s-4);
+  }
+
+  .notfound { padding: var(--s-16) var(--s-4); }
+}
+
+/* ── Motion preferences ──────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Note on dark mode: explicitly NOT supported. Locked decision per
+ * the 2026-05-08 site-strategy roundtable: dark mode reads as
+ * application; this site reads as document.
+ */
