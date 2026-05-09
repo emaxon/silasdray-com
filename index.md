@@ -23,11 +23,6 @@ permalink: /
       <a class="path-link" href="{{ '/ninety-four/' | relative_url }}">→ Read more</a>
     </li>
     <li class="path-item">
-      <h2>NOTES</h2>
-      <p>Writing notes from Silas Dray.</p>
-      <a class="path-link" href="{{ '/notes/' | relative_url }}">→ Read more</a>
-    </li>
-    <li class="path-item">
       <h2>ABOUT</h2>
       <p>What this is.</p>
       <a class="path-link" href="{{ '/about/' | relative_url }}">→ Read more</a>

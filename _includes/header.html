@@ -2,7 +2,11 @@
   <a href="{{ '/' | relative_url }}" class="wordmark">SILAS DRAY</a>
   <nav class="site-nav" aria-label="Primary">
     <a href="{{ '/ninety-four/' | relative_url }}">NINETY-FOUR</a>
-    <a href="{{ '/notes/' | relative_url }}">NOTES</a>
+    {%- comment -%}
+    /notes/ is hidden from nav until the first note ships. Page exists at the
+    URL (still indexed) for direct linking later. Restore here when content
+    lands. See silasdray-com#21.
+    {%- endcomment -%}
     <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     {%- comment -%}
     On non-home pages, the SUBSCRIBE link routes to the home page anchor.

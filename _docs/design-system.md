@@ -43,20 +43,22 @@ Total font payload: 56KB.
 
 ## 2. Palette
 
-Six tokens. Single accent.
+Six tokens. Single accent. **Dark inversion** (locked 2026-05-09 by Evan; original light palette retired — see CHANGELOG).
 
 | Token | Hex | Role | Contrast on `--paper` |
 |---|---|---|---|
-| `--paper` | `#F4F1EA` | Page background. Warm off-white. | — |
-| `--ink` | `#1A1715` | Body text, all primary type. | 14.6:1 (AAA) |
-| `--ink-muted` | `#5C564E` | Secondary text, captions, metadata, fine print. | 6.4:1 (AA) |
-| `--rule` | `#C9C2B5` | Hairline borders, dividers, form outlines. | 1.5:1 (decorative only — never used as text) |
-| `--mark` | `#6B1F1A` | Single accent: links, primary CTAs, focus rings, wordmark. Oxblood. | 8.9:1 (AAA) |
-| `--mark-soft` | `#8B3A2D` | Hover/active state for `--mark`. | 6.0:1 (AA) |
+| `--paper` | `#14110F` | Page background. Deep warm near-black. | — |
+| `--ink` | `#EDE6D9` | Body text, all primary type. Warm cream. | 15.2:1 (AAA) |
+| `--ink-muted` | `#A39C8E` | Secondary text, captions, metadata, fine print. | 6.9:1 (AA, near-AAA) |
+| `--rule` | `#3D362F` | Hairline borders, dividers, form outlines. | 1.6:1 (decorative only — never used as text) |
+| `--mark` | `#D9614F` | Single accent: links, primary CTAs, focus rings, wordmark. Rust. | 5.2:1 (AA) |
+| `--mark-soft` | `#E8867A` | Hover/active state for `--mark`. | 7.3:1 (AAA) |
 
-**Rule:** if something is interactive or important, it is oxblood. Otherwise it is ink or muted ink. There is no second accent color, ever.
+**Rule:** if something is interactive or important, it is rust. Otherwise it is ink or muted ink. There is no second accent color, ever.
 
-**No dark mode.** Locked beyond Phase A. Dark mode reads as application; this site reads as document.
+**Why dark instead of light:** the warm-paper-document framing the original synthesis chose was tonally adjacent to literary fiction generally but did not match the **invisible-dystopia** register of the books specifically. Dark serves the dystopian theme directly. Same restraint, same mono-numerals, same single-accent discipline — just inverted. The rust accent (`--mark`) replaces the original oxblood because oxblood at the original `#6B1F1A` fails WCAG AA on near-black (~1.5:1); rust holds AA at 5.2:1 with the same warm-red family character.
+
+**Auto dark on light-mode systems:** the site does not respect `prefers-color-scheme: light`. The site is dark for everyone. This is deliberate per the dystopian framing.
 
 ## 3. Spacing scale
 
@@ -92,17 +94,23 @@ If a future feature wants to use `94` decoratively, the web-designer must sign o
 
 ### 5.2 Site nav (header)
 
-Inline horizontal list, mono medium, ink color (oxblood for SUBSCRIBE only). 24px gap between items, smaller on mobile. No icons. No dropdowns.
+Inline horizontal list, mono medium, ink color (rust for SUBSCRIBE only). 24px gap between items, smaller on mobile. No icons. No dropdowns.
+
+**Phase A links:** `NINETY-FOUR · ABOUT · SUBSCRIBE`. NOTES is hidden until the first note ships (the page exists at `/notes/` for direct linking but is not surfaced in nav while empty — empty rooms in primary nav read as abandoned, not restrained). Restore `NOTES` link via header.html when content lands. See silasdray-com#21.
 
 ### 5.3 Site footer
 
-Single line where layout permits, stacked on mobile. Mono medium, ink-muted. Format:
+Two-line. First line: italic serif distribution sentence in ink color (with rust em). Second line: mono single-line wordmark + copyright + legal links. Stacked vertically on mobile.
 
 ```
+Find Ninety-Four on Apple Podcasts, Spotify, and YouTube Music when episode one drops.
+
 SILAS DRAY     © 2026 · Privacy · Terms · Cookies · Disclosure
 ```
 
-Footer wordmark is oxblood (same as header); copyright + legal links are ink-muted. No social icons, no email, no "built with" credit.
+Footer wordmark is rust (same as header). Copyright + legal links are ink-muted. The distribution line is italic serif (matches body register, not chrome register) — a writer note, not metadata. No social icons, no email, no "built with" credit.
+
+**Phase B trigger:** when episode one releases, the distribution-line copy changes from "when episode one drops" to platform-specific links. The line itself stays.
 
 ### 5.4 Subscribe form
 
@@ -191,6 +199,16 @@ WCAG 2.2 AA is the floor, not the ceiling.
 4. If the change affects the playbook, propose updates to `~/Sites/agency/docs/playbooks/` in the same change.
 
 ## CHANGELOG
+
+### 2026-05-09 — three principal-overrides after first review
+
+Evan reviewed the deployed Phase A site and overrode three locked decisions. All three preserve the underlying restraint principles; they revise specific lock outcomes.
+
+**Override 1: dark inversion replaces warm-paper.** The original synthesis locked `--paper` as `#F4F1EA` (warm off-white) on the showrunner's reasoning that "dark mode reads as application; this site reads as document." Evan's read on the deployed site: warm-paper served the literary register but did not serve the **invisible-dystopia** register of the books specifically. Dark inversion lands the dystopian framing directly. Implementation: full palette flip with the accent rebalanced from oxblood `#6B1F1A` (fails WCAG AA on near-black, ~1.5:1) to rust `#D9614F` (5.2:1, AA). Same family, brighter. Original light palette retired — not preserved as a toggle. The site is dark for everyone.
+
+**Override 2: footer carries a distribution sentence.** Original synthesis explicitly rejected pre-launch distribution language as "brand-corrosive — date-fake is brand-corrosive." Evan's read: pre-launch traffic is low enough that the negative impact is minimal, and the footer answers a natural question ("where will I find this?"). Restored line: *"Find Ninety-Four on Apple Podcasts, Spotify, and YouTube Music when episode one drops."* Italic serif, ink color with rust em on the title. Phase B updates the wording to platform-link form when episode one ships.
+
+**Override 3: /notes/ hidden from nav until content lands.** Original synthesis locked the `NO ENTRIES` empty state on the site-editor's argument that "silence is stronger than wink." Evan's read: an empty page surfaced in primary nav reads as abandoned regardless of empty-state copy. The page still exists at `/notes/` and is still indexed; the navigation link is removed until the first note ships. Tracked in silasdray-com#21.
 
 ### 2026-05-08 — initial lock
 

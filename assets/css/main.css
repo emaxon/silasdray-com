@@ -50,13 +50,18 @@
 /* ── Tokens ──────────────────────────────────────────────── */
 
 :root {
-  /* Palette */
-  --paper:     #F4F1EA;
-  --ink:       #1A1715;
-  --ink-muted: #5C564E;
-  --rule:      #C9C2B5;
-  --mark:      #6B1F1A;
-  --mark-soft: #8B3A2D;
+  /* Palette — dark inversion (locked 2026-05-08, revised 2026-05-09 per Evan)
+   * Original light palette (paper #F4F1EA / ink #1A1715 / mark #6B1F1A) preserved
+   * in design-system.md CHANGELOG. Dark inversion serves the dystopian register
+   * better than warm-paper-document; ink-on-paper-document was a design lock the
+   * principal overrode. Naive swap fails WCAG (oxblood on near-black is ~1.5:1);
+   * accent rebalanced to a brighter rust that holds AA. */
+  --paper:     #14110F;
+  --ink:       #EDE6D9;
+  --ink-muted: #A39C8E;
+  --rule:      #3D362F;
+  --mark:      #D9614F;
+  --mark-soft: #E8867A;
 
   /* Spacing scale */
   --s-1:  0.25rem;
@@ -229,17 +234,31 @@ a:focus-visible {
 /* ── Site footer ─────────────────────────────────────────── */
 
 .site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--s-4);
   max-width: var(--col-page);
   margin: var(--s-24) auto 0;
   padding: var(--s-8) var(--s-8) var(--s-8);
   border-top: 1px solid var(--rule);
   font-size: var(--t-sm);
   color: var(--ink-muted);
+}
+
+.footer-distribution {
+  font-family: "Plex Serif", Georgia, serif;
+  font-style: italic;
+  font-size: var(--t-md);
+  color: var(--ink);
+  margin: 0 0 var(--s-6);
+  max-width: var(--col-read);
+  letter-spacing: 0;
+}
+.footer-distribution em { color: var(--mark); font-style: italic; }
+
+.footer-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
   letter-spacing: 0.06em;
 }
 
@@ -325,7 +344,7 @@ a:focus-visible {
   display: flex;
   gap: 0;
   border: 1px solid var(--rule);
-  background: #FFFEF9;
+  background: #1F1B17; /* slightly lifted from --paper so the field reads as input */
 }
 
 .subscribe-row input {
@@ -412,8 +431,9 @@ a:focus-visible {
   }
   .site-nav { gap: var(--s-4); }
 
-  .site-footer {
-    padding: var(--s-6) var(--s-4);
+  .site-footer { padding: var(--s-6) var(--s-4); }
+  .footer-distribution { margin-bottom: var(--s-4); }
+  .footer-line {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--s-3);
