@@ -200,6 +200,23 @@ WCAG 2.2 AA is the floor, not the ceiling.
 
 ## CHANGELOG
 
+### 2026-05-09 — /about/ load-bearing line removed
+
+Evan flagged that the locked *"The pen name is not a mystery to be solved; it is a container for the work"* line was load-bearing in **intent** but not in **effect**:
+
+1. *"Not a mystery to be solved"* is a negation that ratifies the rejected frame — naming "mystery" to dismiss it confirms that "mystery" is a relevant interpretation worth pre-empting (the don't-think-about-elephants effect).
+2. *"Container for the work"* is metaphor that requires unpacking — the reader has to map "container = pen name as a wrapper around the books." Two cognitive steps for a metaphor that wasn't strictly necessary.
+
+All three relevant role lenses (showrunner, site-editor, chief-content-officer) updated on his reasoning. The genuinely anti-coy move is to **never mention "mystery" at all** — the page demonstrates the pen-name posture by structurally not talking about the writer as a person, rather than by rhetorically denying the mystery framing.
+
+Final /about/ is three paragraphs:
+
+1. *"Silas Dray is a pen name."* (cold-visitor anchor)
+2. *"The writer behind it has no presence under this name beyond this site and the work it describes. No author photograph. No biography. No town of residence."* (factual descriptions of what doesn't exist — different rhetorical move from negation-as-frame)
+3. *"Ninety-Four is the first book in a planned series of three. It is a serialized novel releasing as a podcast: one episode per week, written to be heard."* (just the work)
+
+The pen-name posture is now obvious by demonstration, not declaration.
+
 ### 2026-05-09 — three principal-overrides after first review
 
 Evan reviewed the deployed Phase A site and overrode three locked decisions. All three preserve the underlying restraint principles; they revise specific lock outcomes.
