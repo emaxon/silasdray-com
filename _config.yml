@@ -14,10 +14,11 @@ author:
   name: Silas Dray
   url: https://silasdray.com
 
-# SendFox subscribe form action — set after Sprint 1.12 / 1.13 wires up the form
-# Until then, form posts to this placeholder which renders a clear console error
-# (better than a silent failure).
-sendfox_form_url: "https://sendfox.com/form/PLACEHOLDER/PLACEHOLDER"
+# SendFox subscribe form action — wired up 2026-05-10 (issue #13).
+# List: "Silas Dray - Ninety-Four" (id 641890)
+# Form: "Silas Dray - Website Signup" (id 278991), redirects to /thanks/
+# Sender domain (silasdray.com) DKIM/SPF authenticated via Route 53.
+sendfox_form_url: "https://sendfox.com/form/mp2kzd/36gxq2"
 
 # Build settings
 markdown: kramdown

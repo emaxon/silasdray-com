@@ -31,8 +31,4 @@ permalink: /cookies/
 
 <p>You can disable cookies in your browser settings. Doing so does not affect site functionality. You can also install Google's <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out browser add-on</a> to specifically opt out of GA4.</p>
 
-<h2>Note on current state</h2>
-
-<p>If you're reading this before Sprint 2 of the site rebuild has shipped (see <a href="https://github.com/emaxon/silasdray-com/issues/18">issue #18</a>), the analytics integration may not yet be active. In that case, the site sets no analytics cookies at all.</p>
-
-<p><em>Last updated: 2026-05-08</em></p>
+<p><em>Last updated: 2026-05-10</em></p>
