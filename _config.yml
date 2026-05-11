@@ -20,6 +20,11 @@ author:
 # Sender domain (silasdray.com) DKIM/SPF authenticated via Route 53.
 sendfox_form_url: "https://sendfox.com/form/mp2kzd/36gxq2"
 
+# GA4 — provisioned 2026-05-11 (issue #18).
+# Property 537059721 "Silas Dray" under EPM Labs (accounts/322646987).
+# Web data stream 14858542683.
+google_analytics: "G-PH1LJ5KB44"
+
 # Build settings
 markdown: kramdown
 permalink: pretty
